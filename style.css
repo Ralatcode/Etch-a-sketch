@@ -14,11 +14,15 @@
     border: 1px solid turquoise;
 }
 
-.box {
+.container > * {
     aspect-ratio: 1;
     border: 2px solid turquoise;
 }
 
-.box:hover {
+.container > *:hover {
     background-color: wheat;
+}
+
+.clicked {
+    background-color: aqua;
 }
