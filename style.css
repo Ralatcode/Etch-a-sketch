@@ -6,5 +6,19 @@
 
 .container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(16, 1fr);
+    gap: 0;
+    width: 80vw;
+    max-width: 960px;
+    margin: 2rem auto 1rem;
+    border: 1px solid turquoise;
+}
+
+.box {
+    aspect-ratio: 1;
+    border: 2px solid turquoise;
+}
+
+.box:hover {
+    background-color: wheat;
 }
