@@ -110,6 +110,10 @@ input[type=number] {
     border-radius: 5px;
 }
 
+#custom.current {
+    background-color: bisque;
+}
+
 .container {
     display: grid;
     grid-template-columns: repeat(16, 1fr);

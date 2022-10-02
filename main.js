@@ -1,6 +1,7 @@
 const container = document.querySelector('.container');
 const styleMode = document.querySelectorAll('.mode');
 const gridsize = document.querySelectorAll('.grid-size');
+const customGrid = document.querySelector('#custom');
 const eraser = document.getElementById('eraser');
 const colorType = document.querySelectorAll('.mode');
 const colorPicker = document.querySelector('#color-picker');
@@ -19,6 +20,9 @@ colorType.forEach(type => {
 })
 // grid-switch
 gridsize.forEach(colorMode => colorMode.addEventListener('click', switchGridSize));
+
+// custom grid 
+customGrid.addEventListener('input', switchGridSize);
 
 // clearbtn
 clearBtn.addEventListener('click', clear);
@@ -93,10 +97,16 @@ function checkMouse(e) {
 function switchGridSize(e) {
     gridsize.forEach(colorMode => {
         colorMode.classList.remove('current');
+        customGrid.classList.remove('current');
 
         if (e.target.value == colorMode.value) {
             colorMode.classList.add('current');
             currentGrid = parseInt(colorMode.value);
+            container.style.gridTemplateColumns = `repeat(${currentGrid},1fr`;
+            generateGridDiv(currentGrid);
+        } else if (e.target.value == customGrid.value) {
+            customGrid.classList.add('current');
+            currentGrid = parseInt(customGrid.value);
             container.style.gridTemplateColumns = `repeat(${currentGrid},1fr`;
             generateGridDiv(currentGrid);
         }
