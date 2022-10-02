@@ -3,6 +3,7 @@ const styleMode = document.querySelectorAll('.mode');
 const gridsize = document.querySelectorAll('.grid-size');
 const eraser = document.getElementById('eraser');
 const colorType = document.querySelectorAll('.mode');
+const colorPicker = document.querySelector('#color-picker');
 const colorScheme = document.querySelectorAll('.clicked');
 const clearBtn = document.getElementById('clear');
 
@@ -37,6 +38,14 @@ function toggleEraser() {
     }
 }
 
+// color picker 
+let colorValue ="";
+
+colorPicker.addEventListener('change', (e) => {
+    colorValue = e.target.value;
+    console.log(colorValue);
+})
+
 
 let mouseDown = false;
 
@@ -55,8 +64,9 @@ function changeColor() {
             let colorH = Math.floor(Math.random() *359);
             let colorS = Math.floor(Math.random() *40) +60;
             let colorL = Math.floor(Math.random() *15) +7;
-             
             this.style.setProperty('--colorBG', `hsl(${colorH}, ${colorS}%, ${colorL}%)`);
+        } else if (currentMode === 'color-mode') {
+            this.style.backgroundColor = colorValue;
         }
     }
 }
