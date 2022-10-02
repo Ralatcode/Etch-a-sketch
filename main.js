@@ -2,6 +2,7 @@ const container = document.querySelector('.container');
 const styleMode = document.querySelectorAll('.mode');
 const gridsize = document.querySelectorAll('.grid-size');
 const eraser = document.getElementById('eraser');
+const clearBtn = document.getElementById('clear');
 
 
 let currentGrid = 16;
@@ -9,8 +10,12 @@ let currentGrid = 16;
 generateGridDiv(currentGrid);
 
 // color mode
+
+// grid-switch
 gridsize.forEach(colorMode => colorMode.addEventListener('click', switchGridSize));
 
+// clearbtn
+clearBtn.addEventListener('click', clear);
 // eraser 
 let eraserState = false;
 
@@ -18,7 +23,6 @@ eraser.addEventListener('click', toggleEraser);
 
 function toggleEraser() {
     eraserState = !eraserState;
-    console.log(eraserState);
     if (eraserState === true) {
         eraser.classList.add('on');
         erase();
@@ -103,4 +107,11 @@ function erase() {
 
     sketchBoxes.forEach(box => box.addEventListener('mouseover', removeColor));
     sketchBoxes.forEach(box => box.addEventListener('mousedown', removeColor));    
+}
+
+function clear() {
+    const sketchBoxes = document.querySelectorAll('.grid-box');
+    sketchBoxes.forEach(box => {
+        box.classList.remove('clicked');
+    })
 }
