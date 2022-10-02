@@ -1,16 +1,15 @@
 const container = document.querySelector('.container');
-
-const gridsize = '';
-
-for (let i = 1; i <= 256; i++) {
-    container.innerHTML += `<div class="box${i}"></div>`;
-}
-
-const sketchBoxes = document.querySelectorAll('.container > *');
+const styleMode = document.querySelectorAll('.mode');
+const gridsize = document.querySelectorAll('.grid-size');
 
 
-sketchBoxes.forEach(box => box.addEventListener('mouseover', changeColor));
-sketchBoxes.forEach(box => box.addEventListener('mousedown', changeColor));
+let currentGrid = 16;
+
+generateGridDiv(currentGrid);
+
+// color mode
+gridsize.forEach(colorMode => colorMode.addEventListener('click', switchGridSize));
+
 
 
 let mouseDown = false;
@@ -38,4 +37,40 @@ function checkMouse(e) {
     } else if (e.type === 'mouseup') {
         mouseDown = false;
     }
+}
+
+function switchGridSize(e) {
+    gridsize.forEach(colorMode => {
+        colorMode.classList.remove('current');
+
+        if (e.target.value == colorMode.value) {
+            colorMode.classList.add('current');
+            currentGrid = parseInt(colorMode.value);
+            container.style.gridTemplateColumns = `repeat(${currentGrid},1fr`;
+            generateGridDiv(currentGrid);
+        }
+    });
+}
+
+function generateGridDiv(currentGrid) {
+    const gridLayout = currentGrid ** 2;
+    container.innerHTML = '';
+
+    for (let i = 1; i <= gridLayout; i++) {
+        const square = document.createElement('div');
+        square.classList.add(`grid-box`);
+        square.classList.add(`box${i}`);
+        container.appendChild(square);
+    }
+
+    draw();
+}
+
+function draw() {
+    const sketchBoxes = document.querySelectorAll('.grid-box');
+
+    // sketchbox
+    sketchBoxes.forEach(box => box.addEventListener('mouseover', changeColor));
+    sketchBoxes.forEach(box => box.addEventListener('mousedown', changeColor));
+
 }
