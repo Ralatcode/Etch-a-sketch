@@ -137,7 +137,8 @@ input[type=number] {
 }
 
 .clicked {
-    background-color: aqua;
+    --colorBG: hsl(0, 100%, 15%);
+    background-color: var(--colorBG);
 }
 
 #eraser.on {
