@@ -1,6 +1,7 @@
 const container = document.querySelector('.container');
 const styleMode = document.querySelectorAll('.mode');
 const gridsize = document.querySelectorAll('.grid-size');
+const eraser = document.getElementById('eraser');
 
 
 let currentGrid = 16;
@@ -9,6 +10,21 @@ generateGridDiv(currentGrid);
 
 // color mode
 gridsize.forEach(colorMode => colorMode.addEventListener('click', switchGridSize));
+
+// eraser 
+let eraserState = false;
+
+eraser.addEventListener('click', () => {
+    eraserState = !eraserState;
+
+    if (eraserState === true) {
+        eraser.classList.add('on');
+        erase();
+    } else {
+        eraser.classList.remove('on');
+    }
+    
+});
 
 
 
@@ -26,6 +42,12 @@ function changeColor() {
         this.classList.add('clicked');
     }
 }
+
+function removeColor() {
+    if (mouseDown) {
+        this.classList.remove('clicked');
+    }
+}
 // checks if the mouse is held down on the container 
 // and assigns true to the mouseDown variable
 
@@ -38,6 +60,7 @@ function checkMouse(e) {
         mouseDown = false;
     }
 }
+
 
 function switchGridSize(e) {
     gridsize.forEach(colorMode => {
@@ -72,5 +95,11 @@ function draw() {
     // sketchbox
     sketchBoxes.forEach(box => box.addEventListener('mouseover', changeColor));
     sketchBoxes.forEach(box => box.addEventListener('mousedown', changeColor));
+}
 
+function erase() {
+    const sketchBoxes = document.querySelectorAll('.grid-box');
+
+    sketchBoxes.forEach(box => box.addEventListener('mouseover', removeColor));
+    sketchBoxes.forEach(box => box.addEventListener('mousedown', removeColor));    
 }

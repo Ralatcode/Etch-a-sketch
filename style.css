@@ -139,3 +139,7 @@ input[type=number] {
 .clicked {
     background-color: aqua;
 }
+
+#eraser.on {
+    background-color: #1b8d4b3d;
+}
