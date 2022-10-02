@@ -22,7 +22,8 @@ body {
 
 .customize {
     text-align: center;
-    width: calc(100% - var(--container));
+    width: 200px;
+    margin: 0 auto;
 }
 
 input, button {
@@ -40,13 +41,17 @@ input, button {
 
 input[type="color"]::-webkit-color-swatch-wrapper {
     padding: 0;
-  }
+}
   
-  input[type="color"]::-webkit-color-swatch {
+input[type="color"]::-webkit-color-swatch {
     background: transparent;
     border: none;
     border-radius:50%;
-  }
+}
+
+.color-mode {
+    margin-bottom: 1.5rem;
+}
 
 #color-picker {
     -webkit-appearance: none;
@@ -58,6 +63,53 @@ input[type="color"]::-webkit-color-swatch-wrapper {
     margin-bottom: 1rem;
 }
 
+button {
+    font-size: .9rem;
+    width: 100%;
+    padding: 1rem .5rem;
+    outline: none;
+    background-color: transparent;
+    border: 2px solid #17cf64;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.mode.active {
+    color: white;
+    background-color: rgba(44, 60, 212, 0.692);
+}
+
+.customize-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: .75rem;
+    margin-top: 1rem;
+}
+
+.customize-grid button {
+    margin-bottom: 0;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#custom {
+    width: 100%;
+    padding: .9rem .5rem;
+    background-color: transparent;
+    border: 2px solid #17cf64;
+    border-radius: 5px;
+}
+
 .container {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
@@ -65,16 +117,22 @@ input[type="color"]::-webkit-color-swatch-wrapper {
     width: var(--container);
     max-width: 550px;
     margin: 2rem auto 1rem;
-    border: 1px solid turquoise;
+    border: 2px solid turquoise;
 }
 
 .container > * {
     aspect-ratio: 1;
-    border: 2px solid turquoise;
+    /* border: 2px solid turquoise; */
 }
 
 .container > *:hover {
     background-color: wheat;
+}
+
+.grid-size.current {
+    color: white;
+    background-color: rgb(40, 18, 161);
+    border-color: rgb(185, 183, 33);
 }
 
 .clicked {
