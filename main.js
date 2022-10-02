@@ -14,18 +14,19 @@ gridsize.forEach(colorMode => colorMode.addEventListener('click', switchGridSize
 // eraser 
 let eraserState = false;
 
-eraser.addEventListener('click', () => {
-    eraserState = !eraserState;
+eraser.addEventListener('click', toggleEraser);
 
+function toggleEraser() {
+    eraserState = !eraserState;
+    console.log(eraserState);
     if (eraserState === true) {
         eraser.classList.add('on');
         erase();
     } else {
         eraser.classList.remove('on');
+        draw();
     }
-    
-});
-
+}
 
 
 let mouseDown = false;
