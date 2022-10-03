@@ -38,16 +38,15 @@ function toggleEraser() {
         erase();
     } else {
         eraser.classList.remove('on');
-        draw();
     }
 }
+
 
 // color picker 
 let colorValue ="";
 
 colorPicker.addEventListener('change', (e) => {
     colorValue = e.target.value;
-    console.log(colorValue);
 })
 
 
@@ -156,13 +155,14 @@ function draw() {
 function erase() {
     const sketchBoxes = document.querySelectorAll('.grid-box');
 
-    sketchBoxes.forEach(box => box.addEventListener('mouseover', removeColor));
     sketchBoxes.forEach(box => box.addEventListener('mousedown', removeColor));    
+    sketchBoxes.forEach(box => box.addEventListener('mouseover', removeColor));
 }
 
 function clear() {
     const sketchBoxes = document.querySelectorAll('.grid-box');
     sketchBoxes.forEach(box => {
         box.classList.remove('clicked');
+        box.backgroundColor = 'transparent';
     })
 }
