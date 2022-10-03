@@ -78,6 +78,7 @@ function changeColor() {
 function removeColor() {
     if (mouseDown) {
         this.classList.remove('clicked');
+        this.style.backgroundColor = 'transparent';
     }
 }
 // checks if the mouse is held down on the container 
