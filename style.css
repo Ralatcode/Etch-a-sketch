@@ -154,3 +154,16 @@ input[type=number] {
 #eraser.on {
     background-color: #1b8d4b3d;
 }
+
+/* mobile layout */
+
+@media (max-width: 600px) {
+    .sketch {
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+    
+    .container {
+        width: 90vw;
+    }
+}
